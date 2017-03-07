@@ -1,0 +1,62 @@
+*{
+	margin:0;
+	padding:0;
+}
+html,body{
+	height:100%;
+}
+
+.wrapper
+{
+	height: 100%;
+	position: relative;
+}
+
+.content
+{
+	min-height:100%;
+	padding-bottom:100px;
+}
+.footer
+{
+	hieght:100px;
+	position: absolute;
+}
+.navbar-brand
+{
+	margin:0px;
+	padding:0px;
+	height: auto;
+}
+.navbar-brand a img
+{
+   height:60px;
+}
+
+.navbar-nav
+{
+	
+	margin-right:2%;
+}
+
+#product {
+	position: static;
+	margin-top: 80px;
+	
+}
+
+#product .navbar-header 
+{
+	padding:11px;
+	margin-left:15px;
+}
+
+#mainnav ul li
+{
+	text-align: center;
+}
+
+.mainnav-items li .current
+{
+	background-color:blue;
+}

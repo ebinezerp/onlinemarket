@@ -1,0 +1,26 @@
+*{
+	margin:0;
+	padding:0;
+}
+html,body{
+	height:100%;
+}
+
+
+.navbar-brand
+{
+	margin:0px;
+	padding:0px;
+	height: auto;
+}
+.navbar-brand a img
+{
+   height:60px;
+}
+
+.navbar-nav
+{
+	float:right;
+	margin-right:80%;
+}
+
