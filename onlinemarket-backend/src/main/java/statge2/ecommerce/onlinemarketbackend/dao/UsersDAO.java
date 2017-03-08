@@ -8,7 +8,7 @@ import statge2.ecommerce.onlinemarketbackend.dto.Users;
 public interface UsersDAO {
 	public boolean addUsers(Users user);
 	public Users getUser(int id);
-	public boolean updateUser(int id);
+	public boolean updateUser(Users user);
 	public boolean deleteUser(int id);
 	
 

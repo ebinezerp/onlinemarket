@@ -38,7 +38,7 @@
 				<div class="modal-footer">
 					<center>
 						<div class="btn-group btn-group-lg">
-							<button type="button" class="btn btn-primary" id="signup">SignUP</button>
+							<a href="registration">"<button type="button" class="btn btn-primary" >SignUP</button></a>
 
 						</div>
 					</center>

@@ -15,7 +15,7 @@
 
 
 				<div class="modal-body">
-					<form action="" class="form">
+					<form action="registration" class="form">
 
 						<div class="form-group">
 							<label for="firstname">First Name</label> <input

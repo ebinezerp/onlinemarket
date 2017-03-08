@@ -16,7 +16,10 @@ public class UsersDAOImp implements UsersDAO {
 	@Override
 	public boolean addUsers(Users user) {
 		try {
+			System.out.println("entered in add user dao");
+			   
                 sessionFactory.getCurrentSession().persist(user);
+                
 			return true;
 		} catch (Exception e) {
 			System.out.println(e);
@@ -31,9 +34,17 @@ public class UsersDAOImp implements UsersDAO {
 	}
 
 	@Override
-	public boolean updateUser(int id) {
+	public boolean updateUser(Users user) {
 		// TODO Auto-generated method stub
+		System.out.println("user details in userdaoimp:::::::::"+user);
+		try{
+			sessionFactory.getCurrentSession().update(user);
+			return true;
+		}catch(Exception e)
+		{
+			 System.out.println(e);
 		return false;
+		}
 	}
 
 	@Override
