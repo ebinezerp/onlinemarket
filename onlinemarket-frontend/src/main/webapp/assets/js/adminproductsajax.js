@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	 var path="assets/images/products/electronics/table/";
+	 var path="/onlinemarket-frontend/assets/images/products/electronics/";
   $("#productstable").DataTable({
 	
 	  "ajax": {
@@ -16,9 +16,9 @@ $(document).ready(function(){
           
           },
           
-          {"data":null,
-        	  "render":function(data,type,row){
-        		  return "<img src='"+path+row.url+"' width='25px' height='25px'></img>";
+          {data:"productName",
+        	  mRender:function(data,type,row){
+        		  return '<img src="'+path+data+'.jpg" width="25px" height="25px"></img>';
         	  }
           },
           

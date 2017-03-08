@@ -6,9 +6,19 @@
 		<div class="row">
 			<div class="col-sm-3"></div>
 			<div class="col-sm-6">
+			
 				<form:form class="form" action="addproduct" method="post"
-					commandName="product">
-
+					commandName="product" enctype="multipart/form-data">
+					<div class="form-group">
+						<label for="categoryName">Category</label>
+						<form:select path="categoryId" class="form-control" id="categoryitem" >
+						<c:forEach items="${categorieslist}"  var="category">
+ 						<form:option value="${category.id}">${category.categoryName}</form:option>
+																		
+						</c:forEach>
+						
+						</form:select>
+					</div>
 					<div class="form-group">
 						<label for="categoryName">Product Name</label>
 						<form:input path="productName" class="form-control" />
@@ -20,18 +30,22 @@
 						<form:errors path="productPrice"></form:errors>
 					</div>
 					<div class="form-group">
-						<label class="radio-inline"><form:radiobutton 
+						<label class="radio-inline"><form:radiobutton
 								path="status" name="optradio" value="true" />Available</label> <label
-							class="radio-inline"><form:radiobutton 
-								name="optradio" path="status" value="false" />Out of Stock</label>
+							class="radio-inline"><form:radiobutton name="optradio"
+								path="status" value="false" />Out of Stock</label>
 					</div>
 					<div class="form-group">
 						<label for="ProdcutDescription">Product Description</label>
 						<form:textarea path="productDespription" class="form-control" />
 						<form:errors path="productDespription"></form:errors>
 					</div>
-					
-					<input type="submit" value="Add Product" class="btn btn-primary">
+					<div class="form-group">
+						<label for="image">Image Upload</label>
+						<form:input path="image" type="file" />
+					</div>
+
+					<input type="submit" value="Add Product" id="adding" class="btn btn-primary">
 
 				</form:form>
 
@@ -61,17 +75,17 @@
 						<form:errors path="productPrice"></form:errors>
 					</div>
 					<div class="form-group">
-						<label class="radio-inline"><form:radiobutton 
+						<label class="radio-inline"><form:radiobutton
 								path="status" name="optradio" value="true" />Available</label> <label
-							class="radio-inline"><form:radiobutton 
-								name="optradio" path="status" value="false" />Out of Stock</label>
+							class="radio-inline"><form:radiobutton name="optradio"
+								path="status" value="false" />Out of Stock</label>
 					</div>
 					<div class="form-group">
 						<label for="ProdcutDescription">Product Description</label>
 						<form:textarea path="productDespription" class="form-control" />
 						<form:errors path="productDespription"></form:errors>
 					</div>
-					
+
 					<input type="submit" value="Update Product" class="btn btn-primary">
 
 				</form:form>

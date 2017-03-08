@@ -1,7 +1,11 @@
 package statge2.ecommerce.onlinemarketfrontend;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,6 +31,8 @@ public class AdminController {
 	CategoryDAO categoryDAO;
 	@Autowired
 	ProductDAO productDAO;
+	@Autowired
+	HttpServletRequest request;
 
 	@RequestMapping(value = { "/admin/login" })
 	public String login(@Valid Users user, BindingResult result, ModelMap model) {
@@ -94,6 +101,7 @@ public class AdminController {
 		model.addAttribute("admin", true);
 		model.addAttribute("newproduct", true);
 		model.addAttribute("product", new Product());
+		model.addAttribute("categorieslist", categoryDAO.allCategories());
 		return "masterpage";
 	}
 	@RequestMapping("admin/addcategory")
@@ -112,16 +120,39 @@ public class AdminController {
 		
 		return "masterpage";
 	}
+	
 	@RequestMapping("admin/addproduct")
 	public String addProduct(@Valid @ModelAttribute("product")Product product,BindingResult result,ModelMap model) {
-		System.out.println("entered add product");
+		
+		//System.out.println("category object::::::::::"+category);
+		
 		if(result.hasErrors())
 		{
 			System.out.println("entered add product errors");
 			model.addAttribute("admin", true);
 			model.addAttribute("newproduct", true);
+			model.addAttribute("categorieslist", categoryDAO.allCategories());
 			return "masterpage";
 		}
+		/*System.out.println(product.getImage().getOriginalFilename());
+		System.out.println(request.getRealPath("assets//images//products//electronics"))*/;
+		File file=new File(request.getRealPath("assets//images//products//electronics"));
+		/*System.out.println(file.exists());*/
+		if(!file.exists()){
+			file.mkdirs();
+		}
+		File storagepath=new File(request.getRealPath("assets//images//products//electronics")+File.separator+product.getProductName()+".jpg");
+		try{
+		byte[] imagebytes=product.getImage().getBytes();
+		System.out.println(imagebytes);
+		BufferedOutputStream bufferedOutputStream=new BufferedOutputStream(new FileOutputStream(storagepath));
+		bufferedOutputStream.write(imagebytes);
+		bufferedOutputStream.close();
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		System.out.println(storagepath);
 		productDAO.addProduct(product);
 		model.addAttribute("admin", true);
 		model.addAttribute("adminproducts", true);

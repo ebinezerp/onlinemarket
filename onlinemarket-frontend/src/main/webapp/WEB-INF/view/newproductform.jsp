@@ -1,10 +1,10 @@
-
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <div class="container-fluid">
 	<div class="row">
 
 		<div class="col-sm-2"></div>
 		<div class="col-sm-8" id="newproductformform">
-			<form:form action="addproduct" method="post" class="form" commandName="product">
+			<form:form action="addproduct" method="post" class="form" commandName="product" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="product-name">Product Name</label>
 					<form:input path="productName" class="form-control" />
@@ -23,6 +23,10 @@
 				<div class="form-group">
 					<label for="product-status">Product Description</label>
 					<form:textarea path="productDespription" class="form-control" />
+				</div>
+				<div class="form-group">
+				<label for="image">Upload Image</label>
+				<form:input path="image" type="file" id="file"/>
 				</div>
 				<center>
 					<input type="submit" class="btn btn-primary">&nbsp;&nbsp;<input

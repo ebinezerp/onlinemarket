@@ -4,7 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.ManyToAny;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Product {
@@ -16,7 +22,30 @@ public class Product {
 	private float productPrice;
 	private String productDespription;
 	private String url;
+	@Transient
+	private MultipartFile image;
 	private boolean status;
+	private Integer categoryId;
+	
+	
+
+	public Integer getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+	
 	
 	
 

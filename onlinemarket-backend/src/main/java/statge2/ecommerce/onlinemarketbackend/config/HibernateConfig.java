@@ -1,6 +1,9 @@
 package statge2.ecommerce.onlinemarketbackend.config;
 
+import java.io.IOException;
 import java.util.Properties;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.sql.DataSource;
 
@@ -9,9 +12,14 @@ import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.Formatter;
+import org.springframework.format.support.FormattingConversionServiceFactoryBean;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+
+import statge2.ecommerce.onlinemarketbackend.dto.Category;
 
 @Configuration
 @ComponentScan(basePackages = { "statge2.ecommerce.onlinemarketbackend" })
@@ -68,4 +76,19 @@ public class HibernateConfig {
 		return txmgr;
 		
 	}
+	
+	   @Bean(name="multipartResolver") 
+	    public CommonsMultipartResolver getResolver() throws IOException{
+	        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+	         
+	        //Set the maximum allowed size (in bytes) for each individual file.
+	        resolver.setMaxUploadSizePerFile(5242880);//5MB
+	         
+	        //You may also set other available properties.
+	         
+	        return resolver;
+	    }
+	   
+	   
+	  
 }
