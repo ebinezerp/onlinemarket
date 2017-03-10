@@ -18,12 +18,14 @@ public class Users implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(unique=true)
 	@Size(min=6,message="minimun of 6 characters")
 	private String userName;
+	@Size(min=6,message="minimun of 6 characters")
 	private String password;
 	@Column(unique=true)
 	private String email;
+	@Column(unique=true)
+	@Size(min=10,max=10,message="minimun of 6 characters")
 	private String mobile;
 	private String role;
 	private boolean is_Active;

@@ -16,17 +16,17 @@ public class Address implements Serializable{
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 private Integer id;
-@NotEmpty
+@NotEmpty(message="should not be empty")
 private String houseNo;
-
+@NotEmpty(message="should not be empty")
 private String street;
-
+@NotEmpty(message="should not be empty")
 private String city;
-
+@NotEmpty(message="should not be empty")
 private String state;
-
+@NotEmpty(message="should not be empty")
 private String Country;
-
+@NotEmpty(message="should not be empty")
 private String pin;
 @ManyToOne(cascade=CascadeType.ALL)
 private Users user;

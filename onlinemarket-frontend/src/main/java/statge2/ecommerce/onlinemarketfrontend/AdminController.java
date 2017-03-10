@@ -26,6 +26,7 @@ import statge2.ecommerce.onlinemarketbackend.dto.Product;
 import statge2.ecommerce.onlinemarketbackend.dto.Users;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 	@Autowired
 	CategoryDAO categoryDAO;
@@ -34,11 +35,9 @@ public class AdminController {
 	@Autowired
 	HttpServletRequest request;
 
-	@RequestMapping(value = { "/admin/login" })
-	public String login(@Valid Users user, BindingResult result, ModelMap model) {
-		if (user.getUserName().equals("admin")) {
-			model.addAttribute("admin", true);
-		}
+	@RequestMapping(value = { "/index" })
+	public String adminlogin(ModelMap model) {
+		model.addAttribute("admin",true);
 		return "masterpage";
 	}
 

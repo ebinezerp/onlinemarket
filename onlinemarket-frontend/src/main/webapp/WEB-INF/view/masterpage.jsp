@@ -8,6 +8,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="page" value="${pageName}" />
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -53,49 +54,32 @@
 </head>
 <body>
 	<div class="wrapper">
+       <%@include file="includes/header.jsp" %>
+       <c:if test="${home==true}">
+        <%@include file="index.jsp" %>
+        </c:if>
+        <c:if test="${aboutus==true}">
+        <%@include file="aboutus.jsp" %>
+        </c:if>
+          <c:if test="${products==true}">
+        <%@include file="products.jsp" %>
+        </c:if>
+          <c:if test="${contactus==true}">
+        <%@include file="contactus.jsp" %>
+        </c:if>
+        <c:if test="${login==true}">
+        <%@include file="loginpage.jsp" %>
+        </c:if>
+       
+        <c:if test="${admin==true}">
+        <%@include file="admin/adminmenu.jsp" %>
+        
+        
+        </c:if>
+        
+        		
 
-		<%@include file="header.jsp"%>
-
-		<div class="content">
-			<c:if test="${fn:containsIgnoreCase(pageName, 'home')}">
-				<%@include file="index.jsp"%>
-			</c:if>
-			<c:if test="${admin==true}">
-				<%@include file="adminmenu.jsp"%>
-				
-				
-					<%@include file="categorydivisions.jsp"%>
-				
-				
-					<%@include file="adminproductdivisions.jsp"%>
-				
-			</c:if>
-
-			<c:if test="${fn:containsIgnoreCase(pageName, 'aboutus')}">
-				<%@include file="aboutus.jsp"%>
-
-			</c:if>
-
-			<c:if test="${fn:containsIgnoreCase(pageName, 'products')}">
-				<%@include file="categorymenu.jsp"%>
-				<c:if test="${table}">
-					<%@include file="products.jsp"%>
-				</c:if>
-				<c:if test="${fn:containsIgnoreCase(pageName,'productpage')}">
-					<%@include file="productpage.jsp"%>
-				</c:if>
-			</c:if>
-
-			<c:if test="${fn:containsIgnoreCase(pageName, 'sucess')}">
-				<%@include file="sucess.jsp"%>
-			</c:if>
-			<c:if test="${fn:containsIgnoreCase(pageName, 'newproductform')}">
-				<%@include file="newproductform.jsp"%>
-			</c:if>
-
-		</div>
-
-		<%@include file="footer.jsp"%>
+		<%@include file="includes/footer.jsp"%>
 
 	</div>
 </body>

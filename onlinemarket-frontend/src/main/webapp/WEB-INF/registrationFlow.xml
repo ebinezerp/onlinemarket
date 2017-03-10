@@ -4,36 +4,59 @@
                           http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
 
-	<!-- Executed when webFlow is triggered -->
+	<var name="users" class="statge2.ecommerce.onlinemarketbackend.dto.Users" />
+	<var name="userAddress" class="statge2.ecommerce.onlinemarketbackend.dto.Address" />
+	<var name="billingAddress" class="statge2.ecommerce.onlinemarketbackend.dto.Address" />
 	<on-start>
-		<!-- demohandler is java class available through annotated Demohandler.java 
-			class.here we are calling it’s initFlow() method. -->
-		<evaluate expression="handlerClass.getUser()" result="flowScope.users" />
+
+		<evaluate expression="handlerClass.initFlow()" result="flowScope.registerModel"></evaluate>
 	</on-start>
-	<!-- if not specified the first view state is the starting state -->
-	<!-- view registration -->
-	<view-state id="start" view="registration" model="flowScope.users">
-		<transition on="submit" to="getaddress" />
-		<transition on="cancel" to="cancel"/>
+
+	<view-state id="start" view="registration" model="users">
+		<transition on="submit" to="addresspage" />
+		<transition on="cancel" to="toHome" validate="false" />
 		<on-exit>
-			<evaluate expression="handlerClass.getUserAddress()" result="flowScope.address" />
+			<evaluate expression="handlerClass.bindingUser(registerModel,users)" />
+
+		</on-exit>
+
+	</view-state>
+
+
+
+	<view-state id="addresspage" model="userAddress">
+		<transition on="submit" to="billingaddress" />
+		<transition on="concel" to="toHome" validate="false"/>
+		<transition on="back" to="start" />
+		<on-exit>
+			<evaluate
+				expression="handlerClass.bindingUserAddresss(registerModel,userAddress)" />
+		</on-exit>
+
+	</view-state>
+	<view-state id="billingaddress" model="billingAddress">
+
+		<transition on="submit" to="userconformation" />
+		<transition on="cancel" to="toHome" validate="false" />
+		<transition on="back" to="billingAddress" />
+		<on-exit>
+			<evaluate
+				expression="handlerClass.bindingBillingAddress(registerModel,billingAddress)" />
 		</on-exit>
 	</view-state>
-	<!-- validating user -->
-	<view-state id="getaddress" view="addresspage" model="flowScope.address">
-		<transition on="submit" to="bindingaddress" />
 
+	<view-state id="userconformation" model="registerModel">
+		<transition on="submit" to="saveuser" />
+		<transition on="edit" to="start" />
 
 	</view-state>
-	<action-state id="bindingaddress">
-	<evaluate expression="handlerClass.store(users,address)"></evaluate>
-	<transition on="success" to="toHome"/>
-	
+	<action-state id="saveuser">
+
+		<evaluate expression="handlerClass.saveUser(registerModel)" />
+		<transition on="success" to="toHome" />
+		<transition on="failure" to="toHome" />
+
 	</action-state>
-	<!-- <view-state id="confirmDetails" view="confirmDetails" model="flowScope.userBean">
-		<transition on="edit" to="start" />
-		<transition on="submit" to="welcome" />
-	</view-state> -->
 
 	<end-state id="welcome" view="welcome" />
 	<end-state id="toHome" view="externalRedirect:contextRelative:/home" />

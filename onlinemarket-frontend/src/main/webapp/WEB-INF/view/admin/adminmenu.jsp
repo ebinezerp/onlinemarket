@@ -12,8 +12,8 @@
 
 					</div>
 					<ul class="nav navbar-nav">
-					<li><a href="${contextPath}/category">Category</a></li>
-					<li><a href="${contextPath}/product">Product</a></li>
+					<li><a href="${contextPath}/admin/category">Category</a></li>
+					<li><a href="${contextPath}/admin/product">Product</a></li>
 					
 					</ul>
 

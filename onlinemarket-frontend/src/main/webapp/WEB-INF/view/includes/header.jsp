@@ -1,3 +1,5 @@
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <div class="header">
 
 	<div class="container-fluid">
@@ -21,10 +23,15 @@
 								<li><a href="${contextPath}/aboutus" id="aboutus">ABOUT
 										US</a></li>
 								<li><a href="${contextPath}/products" id="products">PRODUCTS</a></li>
-								<li><a href="${contextPath}/contactus" id="contactus">CONCTACT
-										US</a></li>
-								<li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;LOGIN
-										</a></li>
+								<li><a href="${contextPath}/contactus" id="contactus">CONTACT US</a></li>
+								<security:authorize access="isAuthenticated()">
+									<li id="logout"><a href="${contextPath}/perform_logout"><span class="glyphicon glyphicon-user"></span>Logout</a>
+									</li>
+								</security:authorize>
+								<security:authorize access="isAnonymous()">
+									<li id="logout"><a href="${contextPath}/login"><span class="glyphicon glypicon-log-in"></span>LOGIN</a>
+									</li>
+								</security:authorize>
 							</ul>
 						</div>
 

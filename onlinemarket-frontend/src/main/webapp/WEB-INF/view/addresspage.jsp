@@ -55,40 +55,66 @@
 <body>
 	<div class="wrapper">
 
-<%@include file="header.jsp" %>
-<div class="content">
-<div class="container-fluid">
+		<%@include file="includes/header.jsp"%>
+		<div class="content">
+			<div class="container-fluid">
 
-<div class="row">
-<div class="col-sm-4"></div>
-<div class="col-sm-4">
+				<div class="row">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-4">
 
-<form:form method="post" commandName="user" modelAttribute="address">
-<div class="form-group">
-<label for="userName">House No</label>
-<form:input path="houseNo" class="form-control"/>
-<form:errors path="houseNo"></form:errors>
-</div>
-<div class="form-group">
-<label for="email">Email</label>
-<form:input path="street" class="form-control"/>
-<form:errors path="street"></form:errors>
-</div>
+						<form:form method="post" commandName="address"
+							modelAttribute="userAddress">
+							<div class="form-group">
+								<label for="userName">House No</label>
+								<form:input path="houseNo" class="form-control" />
+								<form:errors path="houseNo"></form:errors>
 
-<input type="submit" name="_eventId_submit" class="btn btn-primary" value="SUBMIT">
+							</div>
+							<div class="form-group">
+								<label for="street">Street</label>
+								<form:input path="street" class="form-control" />
+								<form:errors path="street"></form:errors>
+							</div>
+							<div class="form-group">
+								<label for="city">City</label>
+								<form:input path="city" class="form-control" />
+								<form:errors path="city"></form:errors>
+							</div>
+							<div class="form-group">
+								<label for="state">State</label>
+								<form:input path="state" class="form-control" />
+								<form:errors path="state"></form:errors>
+							</div>
+							<div class="form-group">
+								<label for="country">Country</label>
+								<form:input path="country" class="form-control" />
+								<form:errors path="country"></form:errors>
+							</div>
+							<div class="form-group">
+								<label for="pin">PIN Code</label>
+								<form:input path="pin" class="form-control" />
+								<form:errors path="pin"></form:errors>
+								</div>
+								
+							
 
 
-</form:form>
+							<input type="submit" name="_eventId_submit"
+								class="btn btn-primary" value="SUBMIT">
+
+
+						</form:form>
 
 
 
-</div>
-<div class="col-sm-4"></div>
-</div>
+					</div>
+					<div class="col-sm-4"></div>
+				</div>
 
-</div>
-</div>
-</div>
-	<%@include file="footer.jsp" %>
+			</div>
+		</div>
+	</div>
+	<%@include file="includes/footer.jsp"%>
 </body>
 </html>

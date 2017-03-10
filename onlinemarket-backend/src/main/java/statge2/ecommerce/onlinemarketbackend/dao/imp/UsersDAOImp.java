@@ -1,5 +1,8 @@
 package statge2.ecommerce.onlinemarketbackend.dao.imp;
 
+import javax.persistence.Query;
+
+import org.h2.engine.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -51,6 +54,13 @@ public class UsersDAOImp implements UsersDAO {
 	public boolean deleteUser(int id) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	public Users getUserNameByUserName(String name)
+	{
+		Query query= sessionFactory.getCurrentSession().createQuery("FROM Users WHERE email=:email");
+		query.setParameter("email", name);
+	Users users=(Users)	query.getSingleResult();
+	return users;
 	}
 
 }

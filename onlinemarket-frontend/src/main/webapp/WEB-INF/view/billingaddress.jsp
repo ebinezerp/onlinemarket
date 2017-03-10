@@ -56,49 +56,52 @@
 	<div class="wrapper">
 
 		
-				<div class="content">
+		<div class="content">
 			<div class="container-fluid">
 
 				<div class="row">
 					<div class="col-sm-4"></div>
 					<div class="col-sm-4">
-						<center>Sign Up</center>
-						<br>
-						<form:form method="post" modelAttribute="users">
-							<div class="form-group">
-								<label for="userName">User Name</label>
-								<form:input path="userName" class="form-control" />
-								<form:errors path="userName"></form:errors>
-							</div>
-							<div class="form-group">
-								<label for="email">Email</label>
-								<form:input path="email" class="form-control" />
-								<form:errors path="email"></form:errors>
-							</div>
-							<div class="form-group">
-								<label for="email">Mobile</label>
-								<form:input path="mobile" class="form-control" />
-								<form:errors path="mobile"></form:errors>
-							</div>
-							<div class="form-group">
-								<label for="password">Password</label>
-								<form:password path="password" class="form-control" />
-								<form:errors path="password"></form:errors>
-							</div>
-							<div class="form-group">
 
-								<form:hidden path="role" value="CUSTOMER" hidden='true'
-									class="form-control" />
+						<form:form method="post" commandName="address"
+							modelAttribute="billingAddress">
+							<div class="form-group">
+								<label for="userName">House No</label>
+								<form:input path="houseNo" class="form-control" />
+								<form:errors path="houseNo"></form:errors>
+
 							</div>
 							<div class="form-group">
-
-								<form:hidden path="is_Active" value="true" hidden="true"
-									class="form-control" />
+								<label for="street">Street</label>
+								<form:input path="street" class="form-control" />
+								<form:errors path="street"></form:errors>
 							</div>
+							<div class="form-group">
+								<label for="city">City</label>
+								<form:input path="city" class="form-control" />
+								<form:errors path="city"></form:errors>
+							</div>
+							<div class="form-group">
+								<label for="state">State</label>
+								<form:input path="state" class="form-control" />
+								<form:errors path="state"></form:errors>
+							</div>
+							<div class="form-group">
+								<label for="country">Country</label>
+								<form:input path="country" class="form-control" />
+							<form:errors path="country"></form:errors>
+							</div>
+							<div class="form-group">
+								<label for="pin">PIN Code</label>
+								<form:input path="pin" class="form-control" />
+								<form:errors path="pin"></form:errors>
+								</div>
+								
+							
+
+
 							<input type="submit" name="_eventId_submit"
-								class="btn btn-primary" value="SUBMIT">&nbsp;&nbsp;<input
-								type="submit" name="_eventId_cancel" value="CANCEL"
-								class="btn btn-primary" />
+								class="btn btn-primary" value="SUBMIT">
 
 
 						</form:form>

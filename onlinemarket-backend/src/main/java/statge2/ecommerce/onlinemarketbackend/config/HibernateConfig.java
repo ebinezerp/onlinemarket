@@ -31,7 +31,7 @@ public class HibernateConfig {
 	static private String password ="";
 	static private String dialect ="org.hibernate.dialect.H2Dialect";
 
-	@Bean
+	@Bean(name={"dataSource"})
 	public DataSource getDataSource() {
 		BasicDataSource bd = new BasicDataSource();
 		bd.setDriverClassName(className);
