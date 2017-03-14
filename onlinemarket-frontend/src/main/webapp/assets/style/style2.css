@@ -16,14 +16,16 @@ html,body{
 }
 .content
 {
-	min-height:100%;
+	min-height:65%;
 	padding-bottom:100px;
 	position: relative;
+	
 }
 .footer
 {
 	hieght:100px;
 	position: absolute;
+	color:white;
 }
 .navbar-brand
 {
@@ -87,3 +89,13 @@ html,body{
 .carousel-inner{
 	border-radius:6px;
 }
+
+.zoomin img { height: 25px; 
+width: 25px; 
+-webkit-transition: all 2s ease; 
+-moz-transition: all 2s ease; 
+-ms-transition: all 2s ease;
+ transition: all 2s ease; } 
+ .zoomin img:hover {
+  width: 200px;
+  height: 200px; } 

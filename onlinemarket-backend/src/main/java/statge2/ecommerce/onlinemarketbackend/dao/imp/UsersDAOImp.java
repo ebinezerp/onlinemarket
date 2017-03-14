@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import statge2.ecommerce.onlinemarketbackend.dao.UsersDAO;
 import statge2.ecommerce.onlinemarketbackend.dto.Users;
+
 @Transactional
 @Repository("usersDAO")
 public class UsersDAOImp implements UsersDAO {
@@ -20,9 +21,9 @@ public class UsersDAOImp implements UsersDAO {
 	public boolean addUsers(Users user) {
 		try {
 			System.out.println("entered in add user dao");
-			   
-                sessionFactory.getCurrentSession().persist(user);
-                
+
+			sessionFactory.getCurrentSession().persist(user);
+
 			return true;
 		} catch (Exception e) {
 			System.out.println(e);
@@ -32,21 +33,20 @@ public class UsersDAOImp implements UsersDAO {
 
 	@Override
 	public Users getUser(int id) {
-		
+
 		return sessionFactory.getCurrentSession().get(Users.class, Integer.valueOf(id));
 	}
 
 	@Override
 	public boolean updateUser(Users user) {
 		// TODO Auto-generated method stub
-		System.out.println("user details in userdaoimp:::::::::"+user);
-		try{
+		System.out.println("user details in userdaoimp:::::::::" + user);
+		try {
 			sessionFactory.getCurrentSession().update(user);
 			return true;
-		}catch(Exception e)
-		{
-			 System.out.println(e);
-		return false;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
 		}
 	}
 
@@ -55,12 +55,25 @@ public class UsersDAOImp implements UsersDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	public Users getUserNameByUserName(String name)
-	{
-		Query query= sessionFactory.getCurrentSession().createQuery("FROM Users WHERE email=:email");
+
+	public Users getUserNameByUserName(String name) {
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE email=:email");
 		query.setParameter("email", name);
-	Users users=(Users)	query.getSingleResult();
-	return users;
+		Users users = (Users) query.getSingleResult();
+		return users;
+	}
+
+	public Users getUserByEmail(String email) {
+		Query q = sessionFactory.getCurrentSession().createQuery("From Users where email=:email", Users.class);
+		q.setParameter("email", email);
+		try {
+			Object o = q.getSingleResult();
+			return (Users) o;
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
 	}
 
 }

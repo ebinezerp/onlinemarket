@@ -5,6 +5,7 @@ import java.io.Serializable;
 import org.springframework.stereotype.Component;
 
 import statge2.ecommerce.onlinemarketbackend.dto.Address;
+import statge2.ecommerce.onlinemarketbackend.dto.Cart;
 import statge2.ecommerce.onlinemarketbackend.dto.Users;
 
 @Component
@@ -12,6 +13,15 @@ public class RegisterModel implements Serializable {
 	Users users;
 	Address billingAddress;
 	Address userAddress;
+	Cart cart;
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 	public Users getUsers() {
 		return users;

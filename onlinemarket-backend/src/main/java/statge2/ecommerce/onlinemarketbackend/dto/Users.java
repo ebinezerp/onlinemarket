@@ -7,10 +7,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -29,8 +31,12 @@ public class Users implements Serializable {
 	private String mobile;
 	private String role;
 	private boolean is_Active;
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "users")
 	private List<Address> address=new ArrayList<>();
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER, mappedBy = "users")
+	private Cart cart;
+	@OneToMany(mappedBy = "users")
+	private List<Orders> orders=new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -113,6 +119,24 @@ public class Users implements Serializable {
 	public void setIs_Active(boolean is_Active) {
 		this.is_Active = is_Active;
 	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+	public List<Orders> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Orders> orders) {
+		this.orders = orders;
+	}
+
+	
 
 	
 

@@ -22,7 +22,10 @@
 		flow-builder-services="flowBuilderServices" base-path="/WEB-INF">
 		<!-- here the id is mapped to invoke this flow -->
 		<webflow:flow-location id="registration" path="registrationFlow.xml" />
+		 <webflow:flow-location id="customer/checkout" path="checkout.xml"/> 
 	</webflow:flow-registry>
+	
+	<!-- adding validator for validation -->
  
 	<webflow:flow-builder-services id="flowBuilderServices"
 		view-factory-creator="viewFactoryCreator" validator="validator" />
@@ -33,9 +36,13 @@
  
 	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
 		<property name="flowRegistry" ref="flowRegistry" />
+		<!-- <property name="checoutProcess" ref="checkoutProcess"/> -->
 		<property name="order" value="0" />
 	</bean>
+	<!-- validator Bean -->
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+	
+	
 	<bean id="viewFactoryCreator"
 		class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
 		<property name="viewResolvers">

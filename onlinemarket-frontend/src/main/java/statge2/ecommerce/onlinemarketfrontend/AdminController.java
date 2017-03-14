@@ -71,14 +71,14 @@ public class AdminController {
 
 	}
 
-	@RequestMapping("admin/{id}/editcategory")
+	@RequestMapping("/{id}/editcategory")
 	public String eidtcategory(@PathVariable Integer id,ModelMap model) {
 		model.addAttribute("admin", true);
 		model.addAttribute("editcategory", true);
 		model.addAttribute("category", categoryDAO.getCategory(id));
 		return "masterpage";
 	}
-	@RequestMapping("admin/{id}/editproduct")
+	@RequestMapping("/{id}/editproduct")
 	public String eidtproduct(@PathVariable Integer id,ModelMap model) {
 		model.addAttribute("admin", true);
 		model.addAttribute("editproduct", true);
@@ -86,7 +86,7 @@ public class AdminController {
 		return "masterpage";
 	}
 
-	@RequestMapping("admin/newcategory")
+	@RequestMapping("/newcategory")
 	public String newCategory(ModelMap model) {
 		System.out.println("Entered new category");
 		model.addAttribute("admin", true);
@@ -94,7 +94,7 @@ public class AdminController {
 		model.addAttribute("category", new Category());
 		return "masterpage";
 	}
-	@RequestMapping("admin/newproduct")
+	@RequestMapping("/newproduct")
 	public String newProduct(ModelMap model) {
 		System.out.println("Entered new category");
 		model.addAttribute("admin", true);
@@ -103,7 +103,7 @@ public class AdminController {
 		model.addAttribute("categorieslist", categoryDAO.allCategories());
 		return "masterpage";
 	}
-	@RequestMapping("admin/addcategory")
+	@RequestMapping("/addcategory")
 	public String addCategory(@Valid @ModelAttribute("category")Category category,BindingResult result,ModelMap model) {
 		System.out.println("entered add cateogy");
 		if(result.hasErrors())
@@ -120,7 +120,7 @@ public class AdminController {
 		return "masterpage";
 	}
 	
-	@RequestMapping("admin/addproduct")
+	@RequestMapping("/addproduct")
 	public String addProduct(@Valid @ModelAttribute("product")Product product,BindingResult result,ModelMap model) {
 		
 		//System.out.println("category object::::::::::"+category);
@@ -158,7 +158,7 @@ public class AdminController {
 		
 		return "masterpage";
 	}
-	@RequestMapping("/admin/{id}/updatecategory")
+	@RequestMapping("/{id}/updatecategory")
 	public String updateCategory(@Valid @ModelAttribute("category")Category category,BindingResult result,ModelMap model) {
 		System.out.println("entered add cateogy");
 		if(result.hasErrors())
@@ -174,7 +174,7 @@ public class AdminController {
 		
 		return "masterpage";
 	}
-	@RequestMapping("/admin/{id}/updateproduct")
+	@RequestMapping("/{id}/updateproduct")
 	public String updateProduct(@Valid @ModelAttribute("product")Product product,BindingResult result,ModelMap model) {
 		System.out.println(product.getProductName());
 		if(result.hasErrors())
@@ -195,7 +195,7 @@ public class AdminController {
 		
 		return "masterpage";
 	}
-	@RequestMapping("/admin/{id}/deletecategory")
+	@RequestMapping("/{id}/deletecategory")
 	public String deleteCategory(@PathVariable Integer id,ModelMap model) {
 		
 		categoryDAO.deleteCategory(id);
@@ -204,7 +204,7 @@ public class AdminController {
 		
 		return "masterpage";
 	}
-	@RequestMapping("/admin/{id}/deleteproduct")
+	@RequestMapping("/{id}/deleteproduct")
 	public String deleteProduct(@PathVariable Integer id,ModelMap model) {
 	
 		productDAO.delete(id);

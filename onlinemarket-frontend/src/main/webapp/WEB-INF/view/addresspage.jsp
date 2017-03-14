@@ -62,7 +62,7 @@
 				<div class="row">
 					<div class="col-sm-4"></div>
 					<div class="col-sm-4">
-
+<h3 style="color:#D35A40;">User Address</h3>
 						<form:form method="post" commandName="address"
 							modelAttribute="userAddress">
 							<div class="form-group">
@@ -98,12 +98,13 @@
 								</div>
 								
 							
-
+<center>
 
 							<input type="submit" name="_eventId_submit"
 								class="btn btn-primary" value="SUBMIT">
 
-
+							<input type="submit" name="_eventId_cancel" class="btn btn-danger" value="CANCEL">
+							</center>
 						</form:form>
 
 

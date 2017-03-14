@@ -13,16 +13,20 @@
 	</on-start>
 
 	<view-state id="start" view="registration" model="users">
-		<transition on="submit" to="addresspage" />
+		<transition on="submit" to="validate" />
 		<transition on="cancel" to="toHome" validate="false" />
-		<on-exit>
+		<!-- <on-exit>
 			<evaluate expression="handlerClass.bindingUser(registerModel,users)" />
-
-		</on-exit>
+			
+		</on-exit> -->
 
 	</view-state>
 
-
+<action-state id="validate">
+<evaluate expression="handlerClass.bindingUser(registerModel,users,messageContext)"/>
+<transition on="success" to="addresspage"/>
+<transition on="failure" to="start"/>
+</action-state>
 
 	<view-state id="addresspage" model="userAddress">
 		<transition on="submit" to="billingaddress" />
@@ -53,13 +57,14 @@
 	<action-state id="saveuser">
 
 		<evaluate expression="handlerClass.saveUser(registerModel)" />
-		<transition on="success" to="toHome" />
+		<transition on="success" to="toHomeSuccess" />
 		<transition on="failure" to="toHome" />
 
 	</action-state>
 
 	<end-state id="welcome" view="welcome" />
 	<end-state id="toHome" view="externalRedirect:contextRelative:/home" />
+	<end-state id="toHomeSuccess" view="externalRedirect:contextRelative:/home?signupsuccess" />
 	<end-state id="toException"
 		view="externalRedirect:contextRelative:exception.jsp" />
 

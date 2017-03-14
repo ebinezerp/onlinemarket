@@ -3,7 +3,7 @@ $(document).ready(function(){
   $("#categorytable").DataTable({
 	
 	  "ajax": {
-		    "url": "/onlinemarket-frontend/categories/all",
+		    "url": "/onlinemarket-frontend/admin/categories/all",
 		    "dataSrc": ""
 		  },
 	  "columns": [

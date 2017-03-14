@@ -27,8 +27,16 @@
 								<label>Password</label> <input type="password" name="password"
 									class="form-control" required>
 							</div>
-							<input type="submit" value="Log In">
+							<center>
+							<input type="submit" value="Log In" class="btn btn-primary">
+						<div class="btn-group btn-group-lg">
+							<a href="registration">"<button type="button" class="btn btn-info" >SignUP</button></a>
+
+						</div>
+					</center>
+							
 						</form>
+						
 
 					</div>
 				</div>

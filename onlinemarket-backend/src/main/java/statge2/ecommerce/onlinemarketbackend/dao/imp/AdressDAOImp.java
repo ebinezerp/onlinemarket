@@ -2,14 +2,21 @@ package statge2.ecommerce.onlinemarketbackend.dao.imp;
 
 
 
+import java.util.List;
+
 import javax.persistence.Query;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import statge2.ecommerce.onlinemarketbackend.dao.AddressDAO;
 import statge2.ecommerce.onlinemarketbackend.dto.Address;
+import statge2.ecommerce.onlinemarketbackend.dto.Users;
 
+@Repository("addressDAO")
+@Transactional
 public class AdressDAOImp implements AddressDAO {
 	@Autowired
 	SessionFactory sessionFactory;
@@ -54,6 +61,14 @@ public class AdressDAOImp implements AddressDAO {
 				e.printStackTrace();
 				return false;
 			}
+	}
+	
+	public List<Address> getAddress(Users user)
+	{
+		Query q=sessionFactory.getCurrentSession().createQuery("From Address where Users_id=:id");
+		q.setParameter("id", user.getId());
+	return	q.getResultList();
+		
 	}
 
 }

@@ -53,10 +53,36 @@
 
 </head>
 <body>
+<c:set var="cart" value="${sessionScope.cart}"/>
 	<div class="wrapper">
+	<div class="header">
        <%@include file="includes/header.jsp" %>
+       </div>
+       <div class="content">
+       <c:if test="${order==true}">
+           <div class="alert alert-success alert-dismissable">
+       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Order placed successfully!!</strong>
+</div>
+       
+       
+       </c:if>
+       
+       
+       <c:if test="${success==true}">
+      
+       <div class="alert alert-success alert-dismissable">
+       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Successfully SignedUp!!</strong>Please <a href="login">LogIn here.</a>
+</div>
+       
+       </c:if>
        <c:if test="${home==true}">
         <%@include file="index.jsp" %>
+        </c:if>
+        
+        <c:if test="${cartdetails==true}">
+        <%@include file="customer/cartitems.jsp" %>
         </c:if>
         <c:if test="${aboutus==true}">
         <%@include file="aboutus.jsp" %>
@@ -70,16 +96,23 @@
         <c:if test="${login==true}">
         <%@include file="loginpage.jsp" %>
         </c:if>
+           <c:if test="${productPage==true}">
+        <%@include file="productpage.jsp" %>
+        </c:if>
        
         <c:if test="${admin==true}">
         <%@include file="admin/adminmenu.jsp" %>
         
         
+        <%@include file="admin/adminproductdivisions.jsp" %>
+        <%@include file="admin/categorydivisions.jsp" %>
+       
         </c:if>
-        
-        		
+        </div>
+        		<div class="footer">
 
 		<%@include file="includes/footer.jsp"%>
+		</div>
 
 	</div>
 </body>

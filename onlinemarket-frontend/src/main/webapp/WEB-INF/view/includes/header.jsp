@@ -25,6 +25,9 @@
 								<li><a href="${contextPath}/products" id="products">PRODUCTS</a></li>
 								<li><a href="${contextPath}/contactus" id="contactus">CONTACT US</a></li>
 								<security:authorize access="isAuthenticated()">
+								<security:authorize access="hasAuthority('CUSTOMER')">
+								<li id="cart"><a href="customer/cart"><span style="border-radius:6px;color:white;background-color:blue;padding:8px;">${cartcount}</span><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
+								</security:authorize>
 									<li id="logout"><a href="${contextPath}/perform_logout"><span class="glyphicon glyphicon-user"></span>Logout</a>
 									</li>
 								</security:authorize>

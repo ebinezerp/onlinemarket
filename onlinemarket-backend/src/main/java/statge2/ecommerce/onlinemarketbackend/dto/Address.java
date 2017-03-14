@@ -29,7 +29,7 @@ private String Country;
 @NotEmpty(message="should not be empty")
 private String pin;
 @ManyToOne(cascade=CascadeType.ALL)
-private Users user;
+private Users users;
 
 /**
  * @return the id
@@ -118,14 +118,14 @@ public void setPin(String pin) {
 /**
  * @return the user
  */
-public Users getUser() {
-	return user;
+public Users getUsers() {
+	return users;
 }
 /**
  * @param user the user to set
  */
-public void setUser(Users user) {
-	this.user = user;
+public void setUsers(Users users) {
+	this.users = users;
 }
 
 

@@ -1,5 +1,7 @@
 package statge2.ecommerce.onlinemarketbackend.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +15,7 @@ import org.hibernate.annotations.ManyToAny;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-public class Product {
+public class Product implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int productId;
@@ -21,6 +23,7 @@ public class Product {
 	private String productName;
 	private float productPrice;
 	private String productDespription;
+	private int quantity;
 	private String url;
 	@Transient
 	private MultipartFile image;
@@ -95,6 +98,14 @@ public class Product {
 
 	public void setProductDespription(String productDespription) {
 		this.productDespription = productDespription;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 }

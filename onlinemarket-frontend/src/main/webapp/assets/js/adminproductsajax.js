@@ -3,7 +3,7 @@ $(document).ready(function(){
   $("#productstable").DataTable({
 	
 	  "ajax": {
-		    "url": "/onlinemarket-frontend/adminproducts/all",
+		    "url": "/onlinemarket-frontend/admin/adminproducts/all",
 		    "dataSrc": ""
 		  },
 	  "columns": [
@@ -15,6 +15,7 @@ $(document).ready(function(){
           }  
           
           },
+          { "data":"quantity" },
           
           {data:"productName",
         	  mRender:function(data,type,row){

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+
+
+	
+	<on-start>
+
+		<evaluate expression="handlerCheckout.initFlow()" result="flowScope.cart"></evaluate>
+	</on-start>
+	
+	<view-state id="start" view="customer/checkout" model="cart">
+	
+	<transition on="conform" to="userAddress"/>
+	<transition on="cancel" to="toCart"/>
+	<on-exit>
+	<evaluate expression="handlerCheckout.getUserAddress(cart.users)" result="flowScope.useraddress"/>
+	
+	</on-exit>
+	</view-state>
+	<!-- -  view state of user address -->
+	<view-state id="userAddress" view="customer/address" model="useraddress">
+	<transition on="conform" to="billingAddress"/>
+	<transition on="back" to="start"/>
+	<transition on="update" to="updateuseraddress"/>
+	<transition on="cancel" to="toCart"/>
+	<on-exit>
+	<!-- getting billing address of user -->
+	<evaluate expression="handlerCheckout.getBillingAddress()" result="flowScope.billingaddress"/>
+	
+	</on-exit>
+	</view-state>
+	<!-- updating user address -->
+	<action-state id="updateuseraddress">
+	<evaluate expression="handlerCheckout.updateUserAddress(useraddress)"/>
+	<transition on="success" to="billingAddress"/>
+	<transition on="failure" to="userAddress"/>
+	</action-state>
+	
+	<!-- billing addrees view -->
+	<view-state id="billingAddress" view="customer/billingaddress" model="billingaddress">
+	
+	<transition on="conform" to="payment"/>
+	<transition on="back" to="userAddress"/>
+	<transition on="update" to="updatebillindaddress"/>
+	<transition on="cancel" to="toCart"/>
+	
+	
+	</view-state>
+	<action-state id="updatebillindaddress">
+	<evaluate expression="handlerCheckout.updateUserAddress(billingaddress)"/>
+	<transition on="success" to="payment"/>
+	<transition on="failure" to="billingAddress"/>
+	</action-state>
+	
+	<!-- payment view -->
+	<view-state id="payment" view="customer/payment">
+	<transition on="submit" to="toHomeSuccess"/>
+	<transition on="cancel" to="toCart"/>
+	<on-exit>
+	<evaluate expression="handlerCheckout.placeOrder(cart.users,billingaddress)"/>
+	</on-exit>		
+	</view-state>
+	
+	<action-state id="ordertable">
+	
+	<transition on="success" to="toHomeSuccess"/>
+	
+	</action-state>
+	<!-- end state -->
+	
+	<end-state id="toCart" view="externalRedirect:contextRelative:/customer/cart" />
+	<end-state id="toException"
+		view="externalRedirect:contextRelative:exception.jsp" />
+<end-state id="toHomeSuccess" view="externalRedirect:contextRelative:/home?order"></end-state>
+	<!-- these events are available in every state -->
+	<global-transitions>
+		<transition on="home" to="toHome" />
+		<transition on="error" to="toException" />
+	</global-transitions>
+	
+	
+	
+</flow>

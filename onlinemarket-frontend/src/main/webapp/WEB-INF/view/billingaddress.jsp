@@ -54,7 +54,7 @@
 
 <body>
 	<div class="wrapper">
-
+<%@include file="includes/header.jsp" %>
 		
 		<div class="content">
 			<div class="container-fluid">
@@ -62,7 +62,7 @@
 				<div class="row">
 					<div class="col-sm-4"></div>
 					<div class="col-sm-4">
-
+<h3 style="color:#D35A40;">Billing Address</h3>
 						<form:form method="post" commandName="address"
 							modelAttribute="billingAddress">
 							<div class="form-group">
@@ -99,10 +99,15 @@
 								
 							
 
+								
+							
+<center>
 
 							<input type="submit" name="_eventId_submit"
 								class="btn btn-primary" value="SUBMIT">
 
+							<input type="submit" name="_eventId_cancel" class="btn btn-danger" value="CANCEL">
+							</center>
 
 						</form:form>
 

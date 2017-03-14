@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	 var path="assets/images/products/electronics/table/";
+	 var path="assets/images/products/electronics/";
   $("#producttable").DataTable({
 	
 	  "ajax": {
@@ -8,10 +8,17 @@ $(document).ready(function(){
 		  },
 	  "columns": [
           { "data": "productName" },
-          { "data": "productPrice" },
-          {"data":null,
+          { "data": "",
+          	"render":function(data,type,row)
+          	{
+          	  return "&#8360;."+row.productPrice+"";
+            }  
+            
+            },
+
+          {"data":"productName",
         	  "render":function(data,type,row){
-        		  return "<img src='"+path+row.url+"' width='25px' height='25px'></img>";
+        		  return "<div class='zoomin'><img src='"+path+data+".jpg'></img></div>";
         	  }
           },
           
@@ -32,7 +39,7 @@ $(document).ready(function(){
           } ,
           {"data":"",
         	  "render":function(data,type,row){
-        		  return "<a href='#' class='btn btn-primary'>Add Cart</a>";
+        		  return "<a href='customer/add/"+row.productId+"/addcart' class='btn btn-primary'>Add Cart</a>";
         	  }
           }  
                     

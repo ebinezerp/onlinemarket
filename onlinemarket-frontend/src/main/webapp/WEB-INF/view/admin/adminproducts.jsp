@@ -22,6 +22,7 @@
 					<tr>
 						<th>Product Name</th>
 						<th>Product Price </th>
+						<th>Quantity</th>
 						<th></th>
 						<th></th>
 						<th></th>
@@ -32,6 +33,7 @@
 					<tr>
 						<th>Product Name</th>
 						<th>Product Price </th>
+						<th>Quantity</th>
 						<th></th>
 						<th></th>
 						<th></th>

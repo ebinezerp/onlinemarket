@@ -30,6 +30,9 @@
 						<div class="form-group">
 							<label for="email">Email</label> <input class="form-control"
 								type="email" id="email" name="email">
+								<c:forEach items="${flowRequestContext.messageContext.getMessagesBySource('email')}" var="err">
+					  <div><span>${err.text}</span></div>
+					</c:forEach><br />
 						</div>
 						<div class="form-group">
 							<label for="mobile">Mobile</label> <input class="form-control"

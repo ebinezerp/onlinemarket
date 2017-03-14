@@ -55,12 +55,12 @@
 <body>
 	<div class="wrapper">
 
-		
+		<%@include file="includes/header.jsp" %>
 		<div class="content">
 			<div class="container-fluid">
 				<div class="col-sm-4"></div>
 				<div class="col-sm-4">
-
+<h3 style="color:#D35A40;">Conform Details</h3>
 					<form:form modelAttribute="registerModel">
 						<div class="form-group">
 							<label for="userName">UserName</label>
@@ -125,9 +125,11 @@
 							<label for="pin">PIN</label>
 							<form:input path="billingAddress.pin" class="form-control" readonly="true"/>
 						</div>
-						<input name="_eventId_edit" type="submit" value="Edit" />
+						<center><input name="_eventId_edit" type="submit" value="Edit" class="btn btn-info"/>
 						<input name="_eventId_submit" type="submit"
-							value="Confirm Details" />
+							value="Confirm Details" class="btn btn-primary" />
+							<input name="_eventId_cancel" type="submit"
+							value="Cancel" class="btn btn-danger" /></center>
 						<br />
 					</form:form>
 
@@ -145,6 +147,7 @@
 
 
 		</div>
+		<%@include file="includes/footer.jsp" %>
 	</div>
 </body>
 </html>

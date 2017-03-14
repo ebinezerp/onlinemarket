@@ -47,7 +47,7 @@ public class UsersTest {
 		    address.setState("telangana");
 		    address.setCountry("india");
 		    address.setPin("5000038");
-		    address.setUser(users);
+		    address.setUsers(users);
 		   Address address1=new Address();
 		    address1.setHouseNo("100");
 		    address1.setStreet("shareen");
@@ -55,7 +55,7 @@ public class UsersTest {
 		    address1.setState("Andhra pradesh");
 		    address1.setCountry("india");
 		    address1.setPin("518401");
-		    address1.setUser(users);
+		    address1.setUsers(users);
 		    addresslist.add(address);
 			addresslist.add(address1);
 			users.setAddress(addresslist);
